@@ -24,11 +24,13 @@
      
      前端的方法document.addEventListener('upush.NotificationReceived', function (e) {}, false)注册监听接收数据
      
-6，由于应用内部类的action需要用到应用的包名，所以manifest中的两个action前半部分要用manifest中的package替换下<action 
+6，由于应用内部类的action需要用到应用的包名，所以manifest中的两个action前半部分要用manifest中的package替换下
 
-android:name="com.test.myapp.NOTIFICATION_PUSH_SERVICE" />
+<action android:name="com.test.myapp.NOTIFICATION_PUSH_SERVICE" />
+
 和<action android:name="com.test.myapp.PUSH_LISTENSERVICE" />。
-      在插件配置文件中修改好再打包成apk就好了。
+
+在插件配置文件中修改好再打包成apk就好了。
 
 7，注意与百度推送不同，百度推送只需要本地应用和服务端应用配置的api_key一致就行，用友推送要APP_ID和应用包名package都
 
