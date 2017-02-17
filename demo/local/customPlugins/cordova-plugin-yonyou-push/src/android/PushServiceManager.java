@@ -369,6 +369,10 @@ import java.util.List;
 /* 495 */       return Constants.Notificatin.getContentText();
 /*     */     }
 /*     */   }
+            public static void setDeviceId(String device_id)
+/*     */   {
+/* 501 */     Constants.setDevice_id(device_id);
+/*     */   }
 /*     */ }
 
 /* Location:           D:\用友推送\UPushV2.0.jar

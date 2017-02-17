@@ -6,7 +6,8 @@ angular.module('starter.controllers', [])
     
     $scope.data = {
         title: '',//标题
-        des: ''//描述
+        des: '',//描述
+        deviceId:''//设备id
     };
 
     function init(){
@@ -36,6 +37,19 @@ angular.module('starter.controllers', [])
         });
 
     }, false);
+
+    $scope.setDeviceId = function(){
+        cordova.plugins.UPush.setDeviceId($scope.data.deviceId);
+    };
+
+    $scope.startService = function(){
+        cordova.plugins.UPush.startService();
+    };
+
+    $scope.stopService = function(){
+        cordova.plugins.UPush.stopService();
+    };
+    
   
     
     

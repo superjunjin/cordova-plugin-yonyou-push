@@ -79,7 +79,7 @@
 		<source-file src="src/android/PushServiceManager.java" target-dir="src/com/example/myuapp" />
 		<source-file src="src/android/ServiceOnlineReceiver.java" target-dir="src/com/example/myuapp" />
       
-        <source-file src="src/android/UPushV2.0.jar" target-dir="libs" />
+        <source-file src="src/android/UPushV2.0.5.jar" target-dir="libs" />
     </platform>
 
 </plugin>

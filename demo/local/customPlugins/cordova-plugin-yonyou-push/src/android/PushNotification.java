@@ -46,10 +46,10 @@ public class PushNotification extends CordovaPlugin
 	         PushServiceManager.init(cordova.getActivity().getApplicationContext());
 	         
 	         PushServiceManager.SetNotification.setContentTitle(Notificatin.NOTIFICATION_TITLE);
-//	 		MsgManager msgManagerImpl = new MsgManager(cordova.getActivity());	 		
-//	 		PushServiceManager.setInformationManager(msgManagerImpl);
-//	 		PushServiceManager.setNotificationActivity(NotificationActivityImple.class);
-	 		
+
+            SharedPreferences userSettings = cordova.getActivity().getApplicationContext().getSharedPreferences("device", 0);
+	        String dId = userSettings.getString("deviceId",PushServiceManager.getDeviceId());
+	        PushServiceManager.setDeviceId(dId);
 	 		// android5.0后不支持
 	 		// Intent intent = new Intent(PushServiceListenService.getAction());
 	 		Intent intent = new Intent(cordova.getActivity(),PushServiceListenService.class);
@@ -57,6 +57,29 @@ public class PushNotification extends CordovaPlugin
 	        System.out.println("Service---------------------------------------"); 
             return true;
 		}
+		if (action.equals("setDeviceId")){
+			String deviceId = args.getString(0);
+			Toast.makeText(cordova.getActivity().getApplicationContext(), deviceId, 1).show();    
+            PushServiceManager.setDeviceId(deviceId);
+            Intent intent = new Intent(PushServiceListenService.getAction());
+            cordova.getActivity().stopService(intent);
+            cordova.getActivity().startService(intent);
+            SharedPreferences userSettings = cordova.getActivity().getApplicationContext().getSharedPreferences("device", 0);
+	        SharedPreferences.Editor editor = userSettings.edit(); 
+	        editor.putString("deviceId",deviceId);
+	        editor.commit();
+            return true;
+        }
+        if (action.equals("startService")){
+            Intent intent = new Intent(PushServiceListenService.getAction());
+            cordova.getActivity().startService(intent);
+            return true;
+        }
+        if (action.equals("stopService")){
+            Intent intent = new Intent(PushServiceListenService.getAction());
+            cordova.getActivity().stopService(intent);
+            return true;
+        }
 		return false;
 	}
 	

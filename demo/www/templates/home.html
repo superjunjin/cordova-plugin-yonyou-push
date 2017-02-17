@@ -3,19 +3,27 @@
     <div class="list">
 
       <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="text" ng-model="data.title">
-        </label>
         <button class="button button-small">
           标题
         </button>
+        <label class="item-input-wrapper">
+          <input type="text" ng-model="data.title">
+        </label>
       </div>
       <div class="item item-input-inset">
+        <button class="button button-small">
+          描述
+        </button>
         <label class="item-input-wrapper">
           <input type="text" ng-model="data.des">
         </label>
-        <button class="button button-small">
-          描述
+      </div>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" ng-model="data.deviceId">
+        </label>
+        <button class="button button-small" ng-click="setDeviceId()">
+          设置设备id
         </button>
       </div>
       
@@ -24,10 +32,8 @@
   </ion-content>
   <div class="bar bar-footer bar-balanced">
     <div class="button-bar">
-       <!-- <a class="button " ng-click="getPairedDevices()">蓝牙</a>
-       <a class="button " ng-click="connect()">连接</a>
-       <a class="button " ng-click="print()">打印</a>
-       <a class="button " ng-click="selectModel()">模板</a> -->
+       <a class="button " ng-click="startService()">开启服务</a>
+       <a class="button " ng-click="stopService()">关闭服务</a>
     </div>
   </div>
 </ion-view>
